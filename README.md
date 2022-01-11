@@ -98,3 +98,14 @@ See page 205 of "Hitachi Single-Chip Microcomputer H8/325 ... Series Hardware Ma
 ```
 
 See page 2-48 of "Mitsubishi Microcomputers 7451 Group" data sheet for more info.
+
+So, what to do with the M37451E8SP's ROM dump?
+
+The M37451E8SP has 16Kbytes ROM, but when reading from the ROM, the 0x0000-0x3fff (first 16Kbyte
+s) region showed only zeroes, then the real data followed from 0x4000 to 0x7fff. So when reading 32Kbytes from a 16Kbyte ROM, the first 16Kbytes can be ignored:
+
+```dd if=dump_m37451esp8__32kb.bin of=dump_m37451esp8__16kb.bin count=1 bs=16k skip=1```
+
+When the M37451E8SP is in normal operation, the 16Kb ROM is mapped in the higher region, so in case of 16Kbytes, in the 0xC000-0xFFFF region.
+The interrupt vector table is at the end of the ROM in the 0xFFE0-0xFFFF range. And the reset vector should be the last one (0xFFFE), which points where the actual code begins. Depending on the application, you can also look for meaningful ASCII strings in the ROM.
+If these seem intact, then you can try [this MELPS740 disassembler](https://github.com/szaguldo-kamaz/m740dasm), which "supports" the M37451.
