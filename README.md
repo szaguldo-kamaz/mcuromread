@@ -55,6 +55,9 @@ Here, specify the serial port dev to use under 'Serial port setup' (/dev/ttyACMx
  Connect GND to HD6473258 pins: 12 (MD0), 11 (MD1), 15 (STBY_), 16 (Vss), 48 (Vss)
 ```
 
+You should see something similiar (regarding the address + data lines):
+![H8/325 + Arduino wire arrangement](https://user-images.githubusercontent.com/86873213/150737227-e2b4ea5f-36aa-46e3-aa9e-097feb525ac4.jpg)
+
 So, what to do with the HD6473258's ROM dump?
 
 The vector table is at \[0x0000-0x002F\], the first 16-bit vector is the reset vector.
@@ -103,6 +106,10 @@ See page 205 of "Hitachi Single-Chip Microcomputer H8/325 ... Series Hardware Ma
  Therefore a clock signal is generated onto D41, but actually the ROM contents could be read without it.
 
 ```
+
+You should see something similiar (regarding the address + data lines, A14 (yellow wire) is left unconnected in this photo, should go to the "bottom" side):
+
+![M37451 + Arduino Wire arrangement](https://user-images.githubusercontent.com/86873213/150737193-9e4f27c1-2391-47fd-9592-24674373ac56.jpg)
 
 So, what to do with the M37451E8SP's ROM dump?
 
