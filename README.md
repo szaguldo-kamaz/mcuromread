@@ -55,6 +55,13 @@ Here, specify the serial port dev to use under 'Serial port setup' (/dev/ttyACMx
  Connect GND to HD6473258 pins: 12 (MD0), 11 (MD1), 15 (STBY_), 16 (Vss), 48 (Vss)
 ```
 
+So, what to do with the HD6473258's ROM dump?
+
+The vector table is at \[0x0000-0x002F\], the first 16-bit vector is the reset vector.
+The reset vector probably points to 0x0100, so that's where the actual code should begin.
+With the help of an H8/300 disassembler, like [dah8300](http://www.karola.fi/rak/sw/dah8300/), you can check whether the code makes sense or not
+(begins with zeroing the RAM in the MCU, configuring ports, and things like that can be a good sign).
+
 See page 205 of "Hitachi Single-Chip Microcomputer H8/325 ... Series Hardware Manual" for more info.
 
 # Wiring for Mitsubishi M37451E8SP (SDIP64 package)
@@ -97,8 +104,6 @@ See page 205 of "Hitachi Single-Chip Microcomputer H8/325 ... Series Hardware Ma
 
 ```
 
-See page 2-48 of "Mitsubishi Microcomputers 7451 Group" data sheet for more info.
-
 So, what to do with the M37451E8SP's ROM dump?
 
 The M37451E8SP has 16Kbytes ROM, but when reading from the ROM, the 0x0000-0x3fff (first 16Kbyte
@@ -108,4 +113,6 @@ s) region showed only zeroes, then the real data followed from 0x4000 to 0x7fff.
 
 When the M37451E8SP is in normal operation, the 16Kb ROM is mapped in the higher region, so in case of 16Kbytes, in the 0xC000-0xFFFF region.
 The interrupt vector table is at the end of the ROM in the 0xFFE0-0xFFFF range. And the reset vector should be the last one (0xFFFE), which points where the actual code begins. Depending on the application, you can also look for meaningful ASCII strings in the ROM.
-If these seem intact, then you can try [this MELPS740 disassembler](https://github.com/szaguldo-kamaz/m740dasm), which "supports" the M37451.
+If these seem intact, then you can try [this MELPS740 disassembler](https://github.com/szaguldo-kamaz/m740dasm), which now includes the symbols/vector table for the M37451.
+
+See page 2-48 of "Mitsubishi Microcomputers 7451 Group" data sheet for more info.
