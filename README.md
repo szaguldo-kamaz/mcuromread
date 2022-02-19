@@ -1,7 +1,9 @@
 # mcuromread
 Simple Arduino sketches to read the contents of the on-chip ROM in old microcontrollers.
 
-Originally created for dumping the ROMs of the MCUs found in the Sony HIL-C1/HIL-1000 Hi-Vision Laserdisc players, but can be used to dump any standard ROM or MCU, which can be set to "PROM (read) mode".
+Originally created for dumping the ROMs of the MCUs found in the Sony HIL-C1/HIL-1000 Hi-Vision Laserdisc players (for details please see: 
+http://www.laserdisc.hu/sony_hils/)
+, but can be used to dump any standard ROM or MCU, which can be set to "PROM (read) mode".
 
 How to use:
 
