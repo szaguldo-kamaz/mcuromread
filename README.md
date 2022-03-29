@@ -125,3 +125,39 @@ The interrupt vector table is at the end of the ROM in the 0xFFE0-0xFFFF range. 
 If these seem intact, then you can try [this MELPS740 disassembler](https://github.com/szaguldo-kamaz/m740dasm), which now includes the symbols/vector table for the M37451.
 
 See page 2-48 of "Mitsubishi Microcomputers 7451 Group" data sheet for more info.
+
+
+# Wiring for Mitsubishi M5M27C256 (DIP28 package)
+
+```
+      M5M27C256 pin - Arduino Mega pin
+ ----------------------------------
+ A00:            10 - D49
+ A01:             9 - D48
+ A02:             8 - D47
+ A03:             7 - D46
+ A04:             6 - D45
+ A05:             5 - D44
+ A06:             4 - D43
+ A07:             3 - D42
+ A08:            25 - D37
+ A09:            24 - D36
+ A10:            21 - D35
+ A11:            23 - D34
+ A12:             2 - D33
+ A13:            26 - D32
+ A14:            27 - D31
+ D00:            11 - D22
+ D01:            12 - D23
+ D02:            13 - D24
+ D03:            15 - D25
+ D04:            16 - D26
+ D05:            17 - D27
+ D06:            18 - D28
+ D07:            19 - D29
+ 
+ Connect +5V to M5M27C256 pin: 28 (Vcc/Vdd)
+ Connect GND to M5M27C256 pins: 14 GND/Vss, 20 (CE_), 22 (OE_)
+```
+
+This should also work with other 27xxxx (27C128, 27C512 etc.) ROMs also. I used this to read two  [M27C256 EPROMs](https://datasheet.datasheetarchive.com/originals/distributors/Databooks-2/Book291-104.pdf) from a Pioneer HLD-1000 and from a Toshiba XR-HD1 Hi-Vision LaserDisc player.
