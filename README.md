@@ -9,7 +9,7 @@ How to use:
 
 1. Load the sketch to the Arduino Mega.
 2. Power off the Arduino (disconnect USB cable).
-3. Connect the Arduino Mega to the MCU according to the instructions below.
+3. Connect the Arduino Mega to the MCU / ROM according to the instructions below.
 4. Double check the connections.
 5. Connect the Arduino to a PC.
 6. Use a terminal program to save the serial output into a file (or copy/paste from the Serial Monitor)
