@@ -160,4 +160,8 @@ See page 2-48 of "Mitsubishi Microcomputers 7451 Group" data sheet for more info
  Connect GND to M5M27C256 pins: 14 GND/Vss, 20 (CE_), 22 (OE_)
 ```
 
+You should see something similiar:
+
+![romread1000](https://user-images.githubusercontent.com/86873213/160757917-ce96882e-56cc-4425-86f5-20f0d496623e.jpg)
+
 This should also work with other 27xxxx (27C128, 27C512 etc.) ROMs also. I used this to read two  [M27C256 EPROMs](https://datasheet.datasheetarchive.com/originals/distributors/Databooks-2/Book291-104.pdf) from a Pioneer HLD-1000 and from a Toshiba XR-HD1 Hi-Vision LaserDisc player.
